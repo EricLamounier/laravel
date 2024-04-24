@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Usuario;
 use Illuminate\Support\Facades\Route;
+use Spatie\FlareClient\Api;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,6 +19,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/x', function () {
-    return 'oi';
+Route::group(['prefix' => ''], function (){
+    Route::get('y', [Usuario::class, 'testeapi']);
 });

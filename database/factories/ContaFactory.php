@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Usuario;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -17,11 +18,12 @@ class ContaFactory extends Factory
     public function definition(): array
     {
         $faker = \Faker\Factory::create();
+        $usuario = Usuario::factory(1)->create()->first();
         return [
             'nome' => $faker->text(31),
             'total' => 0,
             'tipo_conta' => rand(0, 1),
-            'usuario_id_fk' => rand(0, 10),
+            'usuario_id_fk' =>$usuario->id,
         ];
     }
 }

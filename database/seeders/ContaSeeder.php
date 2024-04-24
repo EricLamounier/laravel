@@ -13,6 +13,6 @@ class ContaSeeder extends Seeder
      */
     public function run(): void
     {
-        Conta::factory()->count(10)->create();
+        Conta::factory()->count(1)->create();
     }
 }

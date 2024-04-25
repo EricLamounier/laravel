@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('conta', function(Blueprint $table){
             $table->id();
             $table->string('nome', 50)->nullable(false);
-            $table->double('total', 0)->nullable(false);
-            $table->integer('tipo_conta')->nullable(false);
+            $table->double('total')->nullable(false)->default(0);
+            $table->integer('tipo_conta')->nullable(false)->default(0);
         });
     }
 

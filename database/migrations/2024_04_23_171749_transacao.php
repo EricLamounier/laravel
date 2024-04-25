@@ -14,7 +14,8 @@ return new class extends Migration
         Schema::create('transacao', function(Blueprint $table){
             $table->id();
             $table->string('nome', 50)->nullable(false);
-            $table->double('valor', 0)->nullable(false);
+            $table->double('valor', 0)->nullable(false)->default(0);
+            $table->integer('tipo_transacao')->nullable(false)->default(0)->comment('Receita ou Despesa');
         });
     }
 

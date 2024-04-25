@@ -20,6 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'a'], function (){
-    Route::get('x', [Usuario::class, 'testeapi']);
+Route::group(['prefix' => ''], function (){
+    Route::post('x', [Usuario::class, 'testeapi']);
 });

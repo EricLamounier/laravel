@@ -20,5 +20,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => ''], function (){
-    Route::get('y', [Usuario::class, 'testeapi']);
+    Route::post('y', [Usuario::class, 'testeapi']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::get('x', [Usuario::class, 'testeapi']);
 });

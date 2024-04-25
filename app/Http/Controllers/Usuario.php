@@ -16,6 +16,6 @@ class Usuario extends Controller
 
     public function testeapi(Request $req)
     {
-        return $this->usuarioService->teste($req);
+        return $this->usuarioService->index($req);
     }
 }

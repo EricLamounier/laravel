@@ -74,11 +74,8 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
-            'search_path' => 'public',
+            //'search_path' => 'laravel',
             'sslmode' => 'prefer',
-            'options' => [
-            'cluster' => env('DB_CLUSTER_IDENTIFIER') // Adicionando o identificador do cluster como uma opção
-    ],
         ],
 
         'sqlsrv' => [

@@ -21,7 +21,6 @@ class UsuarioFactory extends Factory
             'nome' => $faker->name(),
             'uid'=> $faker->numerify('#########'),
             'email' => $faker->email(),
-            'usuario' => $faker->text(12),
         ];
     }
 }

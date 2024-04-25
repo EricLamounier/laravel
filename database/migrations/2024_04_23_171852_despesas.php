@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('despesas', function(Blueprint $table){
             $table->id();
-            $table->double('valor', 0)->nullable(false);
+            $table->double('valor', 0)->nullable(false)->default(0);
         });
     }
 

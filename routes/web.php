@@ -18,11 +18,3 @@ use Spatie\FlareClient\Api;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::group(['prefix' => ''], function (){
-    Route::post('y', [Usuario::class, 'testeapi']);
-});
-
-Route::group(['prefix' => ''], function (){
-    Route::get('x', [Usuario::class, 'testeapi']);
-});

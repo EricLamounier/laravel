@@ -2,6 +2,7 @@
 
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
@@ -11,10 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('receitas', function(Blueprint $table){
-            $table->id();
-            $table->float('valor')->nullable(false)->default(0);
-        });
+        DB::statement("
+            CREATE OR REPLACE TRIGGER on_atualiza_transacao
+            AFTER UPDATE ON transacao
+            FOR EACH ROW
+            EXECUTE PROCEDURE atualiza_total_conta();
+        ");
     }
 
     /**
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('receitas');
+        DB::statement("DROP TRIGGER IF EXISTS on_atualiza_transacao;");
     }
 };

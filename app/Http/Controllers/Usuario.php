@@ -14,8 +14,13 @@ class Usuario extends Controller
         $this->usuarioService = $usuario;
     }
 
-    public function testeapi(Request $req)
+    public function index(Request $req)
     {
-        return $this->usuarioService->index($req);
+        return $this->usuarioService->cadastraUsuario($req);
+    }
+
+    public function contas(Request $req)
+    {
+        return $this->usuarioService->contas($req);
     }
 }

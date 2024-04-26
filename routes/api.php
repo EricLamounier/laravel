@@ -21,5 +21,9 @@ Route::get('/', function () {
 });
 
 Route::group(['prefix' => ''], function (){
-    Route::post('x', [Usuario::class, 'testeapi']);
+    Route::post('index', [Usuario::class, 'index']); // Cadastra um usuario
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::get('contas', [Usuario::class, 'contas']); // Cadastra um usuario
 });

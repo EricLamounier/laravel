@@ -8,16 +8,12 @@ use Illuminate\Support\Facades\DB;
 
 class UsuarioService {
 
-    public function teste(Request $req){
-        return $req;
-    }
-
-    public function index(Request $req){
+    public function cadastraUsuario(Request $req){
         DB::beginTransaction();
 
         try{
             Usuario::create([
-                'uid' => rand(0, 9999),
+                'uid' => $req->uid,
                 'nome' => $req->nome,
                 'email' => $req->email
             ]);
@@ -33,6 +29,20 @@ class UsuarioService {
                 'erro' => $e
             ], 500);
         }
+    }
+
+    public function contas(Request $req){
+        $results = DB::select('
+        SELECT
+    c.id AS conta_id,
+    c.nome AS conta_nome,
+    CONCAT(\'[\',
+    STRING_AGG(CONCAT(\'{\', \'"transacao_id":\', t.id, \',\', \'"transacao_nome": "\', t.nome, \'"\', \',\', \'"transacao_valor": \', t.valor, \'}\'), \',\'), \']\') AS transacoes
+from conta c
+join transacao t ON c.id = t.conta_id_fk
+GROUP BY c.id, c.nome;
+        ');
+        return $results;
     }
 }
 

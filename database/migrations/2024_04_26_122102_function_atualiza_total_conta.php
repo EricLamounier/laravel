@@ -13,7 +13,7 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement('
-            CREATE OR REPLACE FUNCTION adiciona_total_conta() -- Quando adicionado uma transacao
+            CREATE OR REPLACE FUNCTION atualiza_total_conta() -- Quando adicionado uma transacao
             RETURNS TRIGGER AS $$
                 BEGIN
                     UPDATE conta
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP FUNCTION IS EXISTS adiciona_total_conta();');
+        DB::statement('DROP FUNCTION IS EXISTS atualiza_total_conta();');
     }
 };

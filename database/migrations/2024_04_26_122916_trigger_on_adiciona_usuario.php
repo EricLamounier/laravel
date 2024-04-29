@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("DROP TRIGGER IF EXISTS on_adiciona_usuario;");
+        DB::statement("DROP TRIGGER IF EXISTS on_adiciona_usuario ON usuario;");
     }
 };

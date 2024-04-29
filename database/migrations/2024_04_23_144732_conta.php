@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 50)->nullable(false);
             $table->float('total')->nullable(false)->default(0);
-            $table->enum('tipo_conta', [0, 1])->default(0);
+            $table->enum('tipo_conta', ['0', '1'])->default('0');
         });
     }
 

@@ -12,12 +12,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        DB::statement("
+        DB::statement('
             CREATE TRIGGER on_atualiza_transacao_conta_receitas
             AFTER INSERT OR UPDATE OR DELETE ON transacao
             FOR EACH ROW
-            EXECUTE PROCEDURE atualiza_receitas_transacao();
-        ");
+            EXECUTE PROCEDURE atualiza_transacao_atualiza_receitas();
+        ');
     }
 
     /**
@@ -25,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement("DROP TRIGGER IF EXISTS on_atualiza_transacao_conta_receitas;");
+        DB::statement('DROP TRIGGER IF EXISTS on_atualiza_transacao_conta_receitas ON transacao');
     }
 };

@@ -5,16 +5,6 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use Spatie\FlareClient\Api;
 
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider and all of them will
-| be assigned to the "api" middleware group. Make something great!
-|
-*/
 
 Route::get('/', function () {
     return view('welcome');
@@ -25,5 +15,37 @@ Route::group(['prefix' => ''], function (){
 });
 
 Route::group(['prefix' => ''], function (){
-    Route::get('contas', [Usuario::class, 'contas']); // Cadastra um usuario
+    Route::get('pegaContas/{id}', [Usuario::class, 'pegaContas']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::get('pegaTotalReceitaDespesa/{id}', [Usuario::class, 'pegaTotalReceitaDespesa']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::get('pegaUsuario/{uid}', [Usuario::class, 'pegaUsuario']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::put('atualizaTransacao/{id}', [Usuario::class, 'atualizaTransacao']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::post('adicionaTransacao/{id}', [Usuario::class, 'adicionaTransacao']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::delete('deletaTransacao/{id}', [Usuario::class, 'deletaTransacao']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::delete('deletaConta/{id}', [Usuario::class, 'deletaConta']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::post('adicionaConta/{id}', [Usuario::class, 'adicionaConta']);
+});
+
+Route::group(['prefix' => ''], function (){
+    Route::get('teste', [Usuario::class, 'teste']);
 });

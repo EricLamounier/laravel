@@ -22,9 +22,9 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropForeign(['usuario_fk_id']);
-        Schema::dropIfExists(['usuario_id_fk']);
-        Schema::dropForeign(['conta_id_fk']);
-        Schema::dropIfExists(['conta_id_fk']);
+        Schema::dropForeign(["usuario_id_fk"]);
+        Schema::dropIfExists(["usuario_id_fk"]);
+        Schema::dropForeign(["conta_id_fk"]);
+        Schema::dropIfExists(["conta_id_fk"]);
     }
 };

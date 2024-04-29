@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('nome', 50)->nullable(false);
             $table->double('valor', 0)->nullable(false)->default(0);
-            $table->integer('tipo_transacao')->nullable(false)->default(0)->comment('Receita ou Despesa');
+            $table->enum('tipo_transacao', ['0', '1'])->nullable(false)->default('0')->comment('Receita ou Despesa');
         });
     }
 

@@ -13,12 +13,12 @@ return new class extends Migration
     public function up(): void
     {
         DB::statement('
-            CREATE OR REPLACE FUNCTION exclui_total_conta() -- Quando excluida uma transacao
+            CREATE OR REPLACE FUNCTION adiciona_total_conta() -- Quando adicionado uma transacao
             RETURNS TRIGGER AS $$
                 BEGIN
                     UPDATE conta
-                    SET total = total - OLD.valor
-                    WHERE usuario_id_fk = OLD.usuario_id_fk AND id = OLD.conta_id_fk;
+                    SET total = total + NEW.valor
+                    WHERE usuario_id_fk = NEW.usuario_id_fk AND id = NEW.conta_id_fk;
                     RETURN NULL;
                 END;
             $$ language plpgsql security definer;
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        DB::statement('DROP FUNCTION IF EXISTS exclui_total_conta();');
+        DB::statement('DROP FUNCTION IF EXISTS adiciona_total_conta();');
     }
 };

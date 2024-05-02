@@ -7,8 +7,8 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
+    /*
+     * Ao excluir uma transacao, o total da conta é automaticamente atualizado para total_conta - valor transacao excluída
      */
     public function up(): void
     {

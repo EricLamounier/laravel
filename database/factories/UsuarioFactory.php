@@ -18,9 +18,9 @@ class UsuarioFactory extends Factory
     {
         $faker = \Faker\Factory::create('pt-BR');
         return [
-            'nome' => $faker->name(),
-            'uid'=> $faker->numerify('#########'),
-            'email' => $faker->email(),
+            'nome' => '#usuario01',
+            'uid'=> 'e488c55d-c95a-40a0-8612-598f48de0345',
+            'email' => 'a@a.com',
         ];
     }
 }

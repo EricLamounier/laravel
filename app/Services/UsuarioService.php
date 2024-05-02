@@ -37,13 +37,13 @@ class UsuarioService
     {
         $results = DB::table('conta')
             ->select(
-                'conta.usuario_id_fk', 
-                'conta.id AS id_conta', 
-                'conta.nome AS nome_conta', 
+                'conta.usuario_id_fk',
+                'conta.id AS id_conta',
+                'conta.nome AS nome_conta',
                 'conta.total AS saldo_conta',
                 'conta.tipo_conta AS tipo_conta',
-                'transacao.id AS id_transacao', 
-                'transacao.nome AS nome_transacao', 
+                'transacao.id AS id_transacao',
+                'transacao.nome AS nome_transacao',
                 'transacao.valor AS valor_transacao'
             )
             ->leftJoin('transacao', 'conta.id', '=', 'transacao.conta_id_fk')
@@ -110,7 +110,7 @@ class UsuarioService
             ->update([
                 'nome' => $req->nome,
                 'valor' => $req->valor
-            ]);        
+            ]);
 
             DB::commit();
             return 'transaction updated';
@@ -144,23 +144,24 @@ class UsuarioService
     }
 
     public function deletaTransacao(Request $req, $usuario_id){
-        
+
         DB::beginTransaction();
-    
+
         try{
             DB::table('transacao')->where([
                 ['id', $req->id],
                 ['usuario_id_fk', $usuario_id]
             ])->delete();
-    
+
             DB::commit();
-            return response()->json(['message' => 'Transacao deleted successfully'], 200);
-    
+            return response()->json(['message' => 'Transacao deletada com sucesso'], 200);
+
         }catch(\Exception $e){
             DB::rollBack();
-            return response()->json(['error' => 'Error deleting transacao', 'details' => $e->getMessage()], 500);
+            return response()->json(['error' => 'Erro ao deletar transacao', 'details' => $e->getMessage()], 500);
         }
     }
+
 
     public function deletaConta(Request $req, $usuario_id){
 
@@ -178,7 +179,7 @@ class UsuarioService
 
         }catch(\Exception $e){
             DB::rollBack();
-            return response()->json(['error' => 'Error deleting conta', 'details' => $e->getMessage()], 500); 
+            return response()->json(['error' => 'Error deleting conta', 'details' => $e->getMessage()], 500);
         }
     }
 
@@ -198,7 +199,7 @@ class UsuarioService
 
         }catch(\Exception $e){
             DB::rollBack();
-            return response()->json(['error' => 'Error inserting conta', 'details' => $e->getMessage()], 500); 
+            return response()->json(['error' => 'Error inserting conta', 'details' => $e->getMessage()], 500);
         }
 
 
